@@ -1,0 +1,31 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<project-private xmlns="http://www.netbeans.org/ns/project-private/1">
+    <editor-bookmarks xmlns="http://www.netbeans.org/ns/editor-bookmarks/1"/>
+    <editor-bookmarks xmlns="http://www.netbeans.org/ns/editor-bookmarks/2" lastBookmarkId="0"/>
+    <open-files xmlns="http://www.netbeans.org/ns/projectui-open-files/2">
+        <group>
+            <file>file:/D:/bkup/Desarrollo/JAVA/Contro_de_Acceso_v02062016/Control_de_Acceso/LectorControlAcceso/src/BD/MapperRegistro.java</file>
+            <file>file:/D:/bkup/Desarrollo/JAVA/Contro_de_Acceso_v02062016/Control_de_Acceso/LectorControlAcceso/src/BD/BD.java</file>
+            <file>file:/D:/bkup/Desarrollo/JAVA/Contro_de_Acceso_v02062016/Control_de_Acceso/LectorControlAcceso/src/ModeloDatos/BaseDatos.java</file>
+            <file>file:/D:/bkup/Desarrollo/JAVA/Contro_de_Acceso_v02062016/Control_de_Acceso/LectorControlAcceso/src/Utilidades/ExportarExcel.java</file>
+            <file>file:/D:/bkup/Desarrollo/JAVA/Contro_de_Acceso_v02062016/Control_de_Acceso/LectorControlAcceso/src/BD/MapperTarjeta.java</file>
+            <file>file:/D:/bkup/Desarrollo/JAVA/Contro_de_Acceso_v02062016/Control_de_Acceso/LectorControlAcceso/src/UI/Registros.java</file>
+            <file>file:/D:/bkup/Desarrollo/JAVA/Contro_de_Acceso_v02062016/Control_de_Acceso/LectorControlAcceso/src/UI/Monitor.java</file>
+            <file>file:/D:/bkup/Desarrollo/JAVA/Contro_de_Acceso_v02062016/Control_de_Acceso/LectorControlAcceso/src/BD/MapperUsuario.java</file>
+            <file>file:/D:/bkup/Desarrollo/JAVA/Contro_de_Acceso_v02062016/Control_de_Acceso/LectorControlAcceso/src/Utilidades/ConvertidorFecha.java</file>
+            <file>file:/D:/bkup/Desarrollo/JAVA/Contro_de_Acceso_v02062016/Control_de_Acceso/LectorControlAcceso/src/BD/BDConsultas.java</file>
+            <file>file:/D:/bkup/Desarrollo/JAVA/Contro_de_Acceso_v02062016/Control_de_Acceso/LectorControlAcceso/src/UI/Configuracion.java</file>
+            <file>file:/D:/bkup/Desarrollo/JAVA/Contro_de_Acceso_v02062016/Control_de_Acceso/LectorControlAcceso/src/UI/Sectores.java</file>
+            <file>file:/D:/bkup/Desarrollo/JAVA/Contro_de_Acceso_v02062016/Control_de_Acceso/LectorControlAcceso/src/BD/IABM.java</file>
+            <file>file:/D:/bkup/Desarrollo/JAVA/Contro_de_Acceso_v02062016/Control_de_Acceso/LectorControlAcceso/src/Utilidades/ManejaArchivos.java</file>
+            <file>file:/D:/bkup/Desarrollo/JAVA/Contro_de_Acceso_v02062016/Control_de_Acceso/LectorControlAcceso/src/Utilidades/Encriptacion.java</file>
+            <file>file:/D:/bkup/Desarrollo/JAVA/Contro_de_Acceso_v02062016/Control_de_Acceso/LectorControlAcceso/src/Errores/ColectorErrores.java</file>
+            <file>file:/D:/bkup/Desarrollo/JAVA/Contro_de_Acceso_v02062016/Control_de_Acceso/LectorControlAcceso/src/BD/MapperSector.java</file>
+            <file>file:/D:/bkup/Desarrollo/JAVA/Contro_de_Acceso_v02062016/Control_de_Acceso/LectorControlAcceso/src/Logica/NegocioGeneral.java</file>
+            <file>file:/D:/bkup/Desarrollo/JAVA/Contro_de_Acceso_v02062016/Control_de_Acceso/LectorControlAcceso/src/UI/Principal.java</file>
+            <file>file:/D:/bkup/Desarrollo/JAVA/Contro_de_Acceso_v02062016/Control_de_Acceso/LectorControlAcceso/src/UI/Tarjetas.java</file>
+            <file>file:/D:/bkup/Desarrollo/JAVA/Contro_de_Acceso_v02062016/Control_de_Acceso/LectorControlAcceso/src/Fachada/Fachada.java</file>
+            <file>file:/D:/bkup/Desarrollo/JAVA/Contro_de_Acceso_v02062016/Control_de_Acceso/LectorControlAcceso/src/Utilidades/ComunicacionSerieParalelo.java</file>
+        </group>
+    </open-files>
+</project-private>
