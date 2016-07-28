@@ -1,16 +1,16 @@
 # ControlAcceso
 Control de acceso basico con manejo de puerto serial, JAVA, MySQL, ACCESS y webservice
 
-Programa hecho en JAVA con el NetBeans 8, para realizar un control básico de acceso, en base a registros con marcas de tiempo, usuarios y códigos identificadores, también sectores (dando lugar a una posible extensión para control distribuido).
+Programa hecho en JAVA con el [NetBeans 8](https://netbeans.org/downloads/index.html), para realizar un control básico de acceso, en base a registros con marcas de tiempo, usuarios y códigos identificadores, también sectores (dando lugar a una posible extensión para control distribuido).
 
 Capacidad de lectura y escritura de datos en puerto serie. En caso de recibir los datos de un dispositivo que los use.
 
 Librerías utilizadas JAVA:
-+ MySQL driver Connector 5.1.23 Driver conector para Bases de datos MySQL.
-+ UCanAccess-3.0.5 Driver conector para manejar bases de datos Microsoft Access.
-+ Poi-3.8 Librería para manejar documentos de Microsoft (Excel en este caso).
-+ JSSC-2.8.0 Librería para manejar puerto serial
-+ DateChooser.jar Plugin de netbeans para interface gráfica de calendarios y fechas.
++ [MySQL driver Connector 5.1.23](http://dev.mysql.com/downloads/connector/) Driver conector para Bases de datos MySQL.
++ [UCanAccess-3.0.5 Driver conector](http://ucanaccess.sourceforge.net/site.html)para manejar bases de datos Microsoft Access.
++ [Poi-3.8](https://poi.apache.org/download.html) Librería para manejar documentos de Microsoft (Excel en este caso).
++ [JSSC-2.8.0](https://github.com/scream3r/java-simple-serial-connector) Librería para manejar puerto serial
++ [DateChooser.jar](http://plugins.netbeans.org/plugin/658/jdatechooser-1-2) Plugin de netbeans para interface gráfica de calendarios y fechas.
 
 Funcionalidades:
 + Administración de usuarios, códigos de identidad (tarjetas), registros y sectores.
