@@ -92,6 +92,12 @@ public class UsuarioABM extends javax.swing.JDialog {
             }
         });
 
+        txtfoto.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                txtfotoActionPerformed(evt);
+            }
+        });
+
         javax.swing.GroupLayout layout = new javax.swing.GroupLayout(getContentPane());
         getContentPane().setLayout(layout);
         layout.setHorizontalGroup(
@@ -159,6 +165,10 @@ public class UsuarioABM extends javax.swing.JDialog {
     private void btncancelarActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btncancelarActionPerformed
         this.Cancelar();
     }//GEN-LAST:event_btncancelarActionPerformed
+
+    private void txtfotoActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_txtfotoActionPerformed
+        this.SeleccionarImagen();
+    }//GEN-LAST:event_txtfotoActionPerformed
 
     /**
      * @param args the command line arguments

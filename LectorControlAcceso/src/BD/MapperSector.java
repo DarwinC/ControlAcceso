@@ -74,12 +74,9 @@ public class MapperSector extends BDConsultas{
         }
     }
 
-    public Sector GetSector(Sector s){
-        return (Sector)this.Get(s);
-    }
-    
-    private IModel Get(Sector s) {
+    public IModel Get(IModel imodel) {
         try{
+            Sector s=(Sector)imodel;
             String consultaSQL="SELECT * FROM sector WHERE id=?";
             PreparedStatement pst=this.PrepareStatement(consultaSQL);
             pst.setInt(1, s.id());
@@ -95,15 +92,7 @@ public class MapperSector extends BDConsultas{
         }
     }
 
-    public ArrayList<Sector> GetAllSectores(){
-        ArrayList<Sector> als=new ArrayList<Sector>();
-        for(IModel im:this.GetAll()){
-            als.add((Sector)im);
-        }
-        return als;
-    }
-    
-    private ArrayList<IModel> GetAll() {
+    public ArrayList<IModel> GetAll() {
         ArrayList<IModel> lstsec=new ArrayList<IModel>();
         try{
             String consultaSQL="SELECT * FROM sector";

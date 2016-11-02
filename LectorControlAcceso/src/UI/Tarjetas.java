@@ -48,7 +48,7 @@ public class Tarjetas extends javax.swing.JFrame {
         btntarjetaslibres = new javax.swing.JButton();
         btntarjetastodas = new javax.swing.JButton();
 
-        setDefaultCloseOperation(javax.swing.WindowConstants.DISPOSE_ON_CLOSE);
+        setDefaultCloseOperation(javax.swing.WindowConstants.EXIT_ON_CLOSE);
 
         lsttarjetas.addMouseListener(new java.awt.event.MouseAdapter() {
             public void mouseClicked(java.awt.event.MouseEvent evt) {

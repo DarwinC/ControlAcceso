@@ -12,7 +12,6 @@ import Modelo.Tarjeta;
 import Modelo.Usuario;
 import ModeloDatos.BaseDatos;
 import ModeloDatos.PuertoSerie;
-import java.util.ArrayList;
 import java.util.Calendar;
 import java.util.Observable;
 import javax.swing.DefaultComboBoxModel;
@@ -212,13 +211,11 @@ public class Fachada extends Observable{
     }
     
     public Tarjeta GetTarjeta(int id){
-        Tarjeta tarjeta=new Tarjeta();
-        tarjeta.id(id);
-        return this.instanciaServicio.GetTarjeta(tarjeta);
+        return this.instanciaServicio.GetTarjeta((new Tarjeta(id)));
     }
     
-    public boolean VerificarCodigoDuplicadoTarjeta(Tarjeta t){
-        return this.instanciaServicio.VerificarTarjetaDuplicada(t);
+    public boolean VerificarCodigoDuplicadoTarjeta(String codigo){
+        return this.instanciaServicio.VerificarTarjetaDuplicada(codigo);
     }
     
     public Tarjeta BuscaTarjetaPorNumeroSerie(String numero_serie){
@@ -238,12 +235,19 @@ public class Fachada extends Observable{
     // REGISTROS ********************************************************
     
     
-    public boolean AgregaRegistro(Calendar fecha_hora, Tarjeta tarjeta){
+    public boolean AgregaRegistroManual(Calendar fecha_hora, Tarjeta tarjeta){
         Registro registro=new Registro();
         registro.fecha_hora(fecha_hora);
         //registro.codigo(codigo);
         registro.tarjeta(tarjeta);
         
+        return this.instanciaServicio.AddRegistro(registro);
+    }
+    
+    public boolean AgregarRegistro(Tarjeta t){
+        Registro registro=new Registro();
+        registro.tarjeta(t);
+        registro.fecha_hora(Calendar.getInstance());
         return this.instanciaServicio.AddRegistro(registro);
     }
     
@@ -319,7 +323,7 @@ public class Fachada extends Observable{
         this.notifyObservers(t);
     }
     
-    public boolean Registrar(){
+    public boolean RegistrarLog(){
         return this.instanciaServicio.RegistroPuertoSerie();
     }
     
@@ -330,9 +334,17 @@ public class Fachada extends Observable{
     public void ProcesarDatos(String datos){
         
         this.MostrarDatosRecibidosPuertoSerie(datos);
-        Tarjeta t=this.instanciaServicio.ProcesarRegistro(datos);
+        
+        Tarjeta t=this.instanciaServicio.GetTarjetaByNumeroSerie(datos);
+        
         if(t!=null){
-            this.MostrarTarjetaMonitor(t);
+            if(this.AgregarRegistro(t)){
+                this.MostrarTarjetaMonitor(t);
+            }else{
+                //Aviso de error de registro y que vuelva a intentar
+            }
+        }else{
+            //Aviso tarjeta no registrada!!!!!
         }
     }
     

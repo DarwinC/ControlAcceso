@@ -47,7 +47,6 @@ abstract class BDConsultas extends BD {
         return rs;
         }catch (Exception e){
             e.printStackTrace();
-            //-> msj error 
             return null;
         }
     }

@@ -17,28 +17,6 @@ import java.util.ArrayList;
  */
 public class MapperTarjeta extends BDConsultas{
 
-    public boolean VerificaDuplicado(IModel imodel){
-        try{
-            String consultaSQL="SELECT * FROM tarjeta WHERE codigo = ?";
-            PreparedStatement pst=this.PrepareStatement(consultaSQL);
-            Tarjeta t=(Tarjeta)imodel;
-            pst.setString(1, t.codigo());
-            ResultSet rs=this.ConsultaSQL(pst);
-            boolean duplicado=false;
-            if(rs.next()){
-                duplicado=true;
-            }
-            this.CierraConexion();
-            return duplicado;
-            
-        }catch (Exception ex){
-            ex.printStackTrace();
-            return false;
-        }finally{
-            this.CierraConexion();
-        }
-    }
-    
     public boolean Add(IModel imodel) {
         try{
             String consultaSQL="INSERT INTO tarjeta (codigo)VALUES(?)";
@@ -92,11 +70,7 @@ public class MapperTarjeta extends BDConsultas{
         }
     }
 
-    public Tarjeta GetTarjeta(Tarjeta t){
-        return (Tarjeta)this.Get(t);
-    }
-    
-    private IModel Get(IModel imodel) {
+    public IModel Get(IModel imodel) {
         try{
             Tarjeta t=(Tarjeta)imodel;
             String consultaSQL="SELECT * FROM tarjeta WHERE id=?";
@@ -118,7 +92,7 @@ public class MapperTarjeta extends BDConsultas{
         }
     }
     
-    public Tarjeta GetByNumeroSerie(String nro_tarjeta){
+    public IModel GetByNumeroSerie(String nro_tarjeta){
         try{
             String consultaSQL="SELECT * FROM tarjeta WHERE codigo=?";
             PreparedStatement pst=this.PrepareStatement(consultaSQL);
@@ -156,15 +130,7 @@ public class MapperTarjeta extends BDConsultas{
         }
     }
 
-    public ArrayList<Tarjeta> GetTarjetas(){
-        ArrayList<Tarjeta> alt=new ArrayList<Tarjeta>();
-        for(IModel im:this.GetAll()){
-            alt.add((Tarjeta)im);
-        }
-        return alt;
-    }
-    
-    private ArrayList<IModel> GetAll() {
+    public ArrayList<IModel> GetAll() {
         ArrayList<IModel> lstsec=new ArrayList<IModel>();
         try{
             String consultaSQL="SELECT * FROM tarjeta";

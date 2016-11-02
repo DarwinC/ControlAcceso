@@ -40,6 +40,10 @@ public class Tarjeta implements IModel{
         this.codigo=codigo;
     }
     
+    public Tarjeta(int id){
+        this.id=id;
+    }
+    
     @Override
     public String toString(){
         return this.codigo();

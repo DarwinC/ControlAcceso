@@ -69,7 +69,7 @@ public class Configuracion extends javax.swing.JFrame implements Observer{
         txtusuario = new javax.swing.JTextField();
         cmbmotores = new javax.swing.JComboBox();
         jLabel7 = new javax.swing.JLabel();
-        lblServidor = new javax.swing.JLabel();
+        jLabel8 = new javax.swing.JLabel();
         jLabel9 = new javax.swing.JLabel();
         jLabel10 = new javax.swing.JLabel();
         jLabel11 = new javax.swing.JLabel();
@@ -80,14 +80,9 @@ public class Configuracion extends javax.swing.JFrame implements Observer{
         jLabel13 = new javax.swing.JLabel();
         txtpuerto = new javax.swing.JTextField();
 
-        setDefaultCloseOperation(javax.swing.WindowConstants.DISPOSE_ON_CLOSE);
-        addWindowListener(new java.awt.event.WindowAdapter() {
-            public void windowClosed(java.awt.event.WindowEvent evt) {
-                formWindowClosed(evt);
-            }
-        });
+        setDefaultCloseOperation(javax.swing.WindowConstants.EXIT_ON_CLOSE);
 
-        cmdcerrar.setText("Cerrar");
+        cmdcerrar.setText("Cancelar");
         cmdcerrar.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
                 cmdcerrarActionPerformed(evt);
@@ -187,21 +182,19 @@ public class Configuracion extends javax.swing.JFrame implements Observer{
                 .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING, false)
                     .addGroup(jPanel1Layout.createSequentialGroup()
                         .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                            .addComponent(jLabel1)
+                            .addComponent(jLabel2)
                             .addComponent(cmbBaudiosRate, javax.swing.GroupLayout.PREFERRED_SIZE, 81, javax.swing.GroupLayout.PREFERRED_SIZE)
+                            .addComponent(jLabel3, javax.swing.GroupLayout.PREFERRED_SIZE, 80, javax.swing.GroupLayout.PREFERRED_SIZE)
                             .addComponent(cmbparidad, javax.swing.GroupLayout.PREFERRED_SIZE, 80, javax.swing.GroupLayout.PREFERRED_SIZE)
                             .addGroup(jPanel1Layout.createSequentialGroup()
                                 .addComponent(cmbPuertos, javax.swing.GroupLayout.PREFERRED_SIZE, 81, javax.swing.GroupLayout.PREFERRED_SIZE)
                                 .addGap(18, 18, 18)
                                 .addComponent(btnscan, javax.swing.GroupLayout.PREFERRED_SIZE, 138, javax.swing.GroupLayout.PREFERRED_SIZE))
+                            .addComponent(jLabel4)
                             .addComponent(cmbBitesSize, javax.swing.GroupLayout.PREFERRED_SIZE, 80, javax.swing.GroupLayout.PREFERRED_SIZE)
-                            .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.TRAILING, false)
-                                .addComponent(jLabel5, javax.swing.GroupLayout.Alignment.LEADING, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
-                                .addComponent(jLabel4, javax.swing.GroupLayout.Alignment.LEADING, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
-                                .addComponent(jLabel2, javax.swing.GroupLayout.Alignment.LEADING, javax.swing.GroupLayout.DEFAULT_SIZE, 111, Short.MAX_VALUE))
-                            .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.TRAILING, false)
-                                .addComponent(jLabel3, javax.swing.GroupLayout.Alignment.LEADING, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
-                                .addComponent(btncon, javax.swing.GroupLayout.Alignment.LEADING, javax.swing.GroupLayout.DEFAULT_SIZE, 117, Short.MAX_VALUE))
-                            .addComponent(jLabel1, javax.swing.GroupLayout.PREFERRED_SIZE, 141, javax.swing.GroupLayout.PREFERRED_SIZE))
+                            .addComponent(jLabel5)
+                            .addComponent(btncon, javax.swing.GroupLayout.PREFERRED_SIZE, 117, javax.swing.GroupLayout.PREFERRED_SIZE))
                         .addGap(18, 18, 18))
                     .addGroup(jPanel1Layout.createSequentialGroup()
                         .addComponent(cmbStopBits, javax.swing.GroupLayout.PREFERRED_SIZE, 81, javax.swing.GroupLayout.PREFERRED_SIZE)
@@ -214,8 +207,8 @@ public class Configuracion extends javax.swing.JFrame implements Observer{
                         .addComponent(jScrollPane2, javax.swing.GroupLayout.PREFERRED_SIZE, 248, javax.swing.GroupLayout.PREFERRED_SIZE))
                     .addComponent(jScrollPane1, javax.swing.GroupLayout.PREFERRED_SIZE, 248, javax.swing.GroupLayout.PREFERRED_SIZE)
                     .addComponent(cmdrecibir, javax.swing.GroupLayout.PREFERRED_SIZE, 248, javax.swing.GroupLayout.PREFERRED_SIZE)
-                    .addComponent(btnGuardarCfgPS, javax.swing.GroupLayout.PREFERRED_SIZE, 115, javax.swing.GroupLayout.PREFERRED_SIZE)
-                    .addComponent(jLabel6, javax.swing.GroupLayout.PREFERRED_SIZE, 136, javax.swing.GroupLayout.PREFERRED_SIZE))
+                    .addComponent(jLabel6, javax.swing.GroupLayout.PREFERRED_SIZE, 80, javax.swing.GroupLayout.PREFERRED_SIZE)
+                    .addComponent(btnGuardarCfgPS, javax.swing.GroupLayout.PREFERRED_SIZE, 115, javax.swing.GroupLayout.PREFERRED_SIZE))
                 .addGap(0, 22, Short.MAX_VALUE))
         );
         jPanel1Layout.setVerticalGroup(
@@ -277,61 +270,51 @@ public class Configuracion extends javax.swing.JFrame implements Observer{
             }
         });
         jPanel2.add(txtservidor);
-        txtservidor.setBounds(190, 80, 320, 20);
+        txtservidor.setBounds(100, 80, 410, 20);
 
         txtnombrebd.setText("nombre de base de datos");
         jPanel2.add(txtnombrebd);
-        txtnombrebd.setBounds(190, 110, 130, 20);
+        txtnombrebd.setBounds(100, 110, 220, 20);
 
         txtusuario.setText("usuario");
         jPanel2.add(txtusuario);
-        txtusuario.setBounds(190, 140, 130, 20);
+        txtusuario.setBounds(100, 140, 220, 20);
 
         cmbmotores.setModel(new javax.swing.DefaultComboBoxModel(new String[] { "MySQL", "Access" }));
-        cmbmotores.addItemListener(new java.awt.event.ItemListener() {
-            public void itemStateChanged(java.awt.event.ItemEvent evt) {
-                cmbmotoresItemStateChanged(evt);
-            }
-        });
-        cmbmotores.addActionListener(new java.awt.event.ActionListener() {
-            public void actionPerformed(java.awt.event.ActionEvent evt) {
-                cmbmotoresActionPerformed(evt);
-            }
-        });
         jPanel2.add(cmbmotores);
         cmbmotores.setBounds(10, 40, 123, 20);
 
         jLabel7.setText("Motor de base de datos");
         jPanel2.add(jLabel7);
-        jLabel7.setBounds(10, 20, 240, 14);
+        jLabel7.setBounds(10, 20, 114, 14);
 
-        lblServidor.setText("Servidor:");
-        jPanel2.add(lblServidor);
-        lblServidor.setBounds(10, 81, 180, 14);
+        jLabel8.setText("Servidor:");
+        jPanel2.add(jLabel8);
+        jLabel8.setBounds(10, 81, 44, 14);
 
         jLabel9.setText("Nombre BD:");
         jPanel2.add(jLabel9);
-        jLabel9.setBounds(10, 110, 180, 14);
+        jLabel9.setBounds(10, 110, 65, 14);
 
         jLabel10.setText("Usuario:");
         jPanel2.add(jLabel10);
-        jLabel10.setBounds(10, 140, 180, 14);
+        jLabel10.setBounds(10, 140, 50, 14);
 
         jLabel11.setText("Clave:");
         jPanel2.add(jLabel11);
-        jLabel11.setBounds(10, 210, 180, 14);
+        jLabel11.setBounds(10, 210, 80, 14);
 
         jLabel12.setText("Confirma Clave:");
         jPanel2.add(jLabel12);
-        jLabel12.setBounds(10, 240, 180, 14);
+        jLabel12.setBounds(10, 240, 90, 14);
 
         txtclave.setText("jPasswordField1");
         jPanel2.add(txtclave);
-        txtclave.setBounds(190, 210, 111, 20);
+        txtclave.setBounds(100, 210, 111, 20);
 
         txtclaveconfirma.setText("jPasswordField2");
         jPanel2.add(txtclaveconfirma);
-        txtclaveconfirma.setBounds(190, 240, 111, 20);
+        txtclaveconfirma.setBounds(100, 240, 111, 20);
 
         btnGuardarCfgBD.setText("Guardar");
         btnGuardarCfgBD.addActionListener(new java.awt.event.ActionListener() {
@@ -344,9 +327,9 @@ public class Configuracion extends javax.swing.JFrame implements Observer{
 
         jLabel13.setText("Puerto:");
         jPanel2.add(jLabel13);
-        jLabel13.setBounds(10, 170, 180, 14);
+        jLabel13.setBounds(10, 170, 36, 14);
         jPanel2.add(txtpuerto);
-        txtpuerto.setBounds(190, 170, 70, 20);
+        txtpuerto.setBounds(100, 170, 70, 20);
 
         jTabbedPane1.addTab("Base de Datos", jPanel2);
 
@@ -356,9 +339,7 @@ public class Configuracion extends javax.swing.JFrame implements Observer{
             layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
             .addGroup(layout.createSequentialGroup()
                 .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.TRAILING)
-                    .addGroup(layout.createSequentialGroup()
-                        .addGap(321, 321, 321)
-                        .addComponent(cmdcerrar, javax.swing.GroupLayout.PREFERRED_SIZE, 94, javax.swing.GroupLayout.PREFERRED_SIZE))
+                    .addComponent(cmdcerrar, javax.swing.GroupLayout.PREFERRED_SIZE, 94, javax.swing.GroupLayout.PREFERRED_SIZE)
                     .addComponent(jTabbedPane1, javax.swing.GroupLayout.PREFERRED_SIZE, 540, javax.swing.GroupLayout.PREFERRED_SIZE))
                 .addGap(0, 12, Short.MAX_VALUE))
         );
@@ -421,18 +402,6 @@ public class Configuracion extends javax.swing.JFrame implements Observer{
     private void chkregistroActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_chkregistroActionPerformed
         // TODO add your handling code here:
     }//GEN-LAST:event_chkregistroActionPerformed
-
-    private void formWindowClosed(java.awt.event.WindowEvent evt) {//GEN-FIRST:event_formWindowClosed
-        // TODO add your handling code here:
-    }//GEN-LAST:event_formWindowClosed
-
-    private void cmbmotoresActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_cmbmotoresActionPerformed
-        // TODO add your handling code here:
-    }//GEN-LAST:event_cmbmotoresActionPerformed
-
-    private void cmbmotoresItemStateChanged(java.awt.event.ItemEvent evt) {//GEN-FIRST:event_cmbmotoresItemStateChanged
-        SeleccionDeMotor();
-    }//GEN-LAST:event_cmbmotoresItemStateChanged
 
     /**
      * @param args the command line arguments
@@ -498,13 +467,13 @@ public class Configuracion extends javax.swing.JFrame implements Observer{
     private javax.swing.JLabel jLabel5;
     private javax.swing.JLabel jLabel6;
     private javax.swing.JLabel jLabel7;
+    private javax.swing.JLabel jLabel8;
     private javax.swing.JLabel jLabel9;
     private javax.swing.JPanel jPanel1;
     private javax.swing.JPanel jPanel2;
     private javax.swing.JScrollPane jScrollPane1;
     private javax.swing.JScrollPane jScrollPane2;
     private javax.swing.JTabbedPane jTabbedPane1;
-    private javax.swing.JLabel lblServidor;
     private javax.swing.JPasswordField txtclave;
     private javax.swing.JPasswordField txtclaveconfirma;
     private javax.swing.JTextField txtenvio;
@@ -552,7 +521,7 @@ public class Configuracion extends javax.swing.JFrame implements Observer{
     }
     
     public void Cerrar(){
-        this.setVisible(false);
+        this.dispose();
     }
     
     public void GuardarCfgBD(){
@@ -608,20 +577,5 @@ public class Configuracion extends javax.swing.JFrame implements Observer{
             this.EscribeDatosRecibidos(arg.toString());
         }
     }
-    
-    public void SeleccionDeMotor(){
-        if(this.cmbmotores.getSelectedIndex()>-1){
-            if(this.cmbmotores.getSelectedItem().toString().compareTo("Access")==0){
-                this.txtnombrebd.setText("");
-                this.txtnombrebd.setEditable(false);
-                this.lblServidor.setText("Ruta al archivo Access");
-            }else{
-                this.txtnombrebd.setEditable(true);
-                this.lblServidor.setText("Servidor");
-            }
-            
-        }
-    }
-    
     
 }

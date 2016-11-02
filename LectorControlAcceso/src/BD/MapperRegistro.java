@@ -85,12 +85,9 @@ public class MapperRegistro extends BDConsultas{
         }
     }
 
-    public Registro GetRegistro(Registro r){
-        return (Registro)this.Get(r);
-    }
-    
-    private IModel Get(Registro r) {
+    public IModel Get(IModel imodel) {
         try{
+            Registro r=(Registro)imodel;
             String consultaSQL="SELECT * FROM registro WHERE id=?";
             PreparedStatement pst=this.PrepareStatement(consultaSQL);
             pst.setInt(1, r.id());
@@ -106,18 +103,10 @@ public class MapperRegistro extends BDConsultas{
         }
     }
 
-    public ArrayList<Registro> GetRegistros(){
-        ArrayList<Registro> alr=new ArrayList<Registro>();
-        for(IModel im:this.GetAll()){
-            alr.add((Registro)im);
-        }
-        return alr;
-    }
-    
-    private ArrayList<IModel> GetAll() {
+    public ArrayList<IModel> GetAll() {
         ArrayList<IModel> lstsec=new ArrayList<IModel>();
         try{
-            String consultaSQL="SELECT * FROM registro LIMIT 500";
+            String consultaSQL="SELECT * FROM registro";// LIMIT 500";
             PreparedStatement pst=this.PrepareStatement(consultaSQL);
             ResultSet rs=this.ConsultaSQL(pst);
             while(rs.next()){
@@ -136,8 +125,7 @@ public class MapperRegistro extends BDConsultas{
     public ArrayList<Registro> GetAllBy(Calendar fecha_desde,Calendar fecha_hasta, Usuario u, Tarjeta t){ // entre fechas
         ArrayList<Registro> lstsec=new ArrayList<Registro>();
         try{
-            //? OR fecha_hora
-            //? OR fecha_hora
+
             String consultaSQL=""
                     + "SELECT * "
                     + "FROM registro "
@@ -204,38 +192,6 @@ public class MapperRegistro extends BDConsultas{
             this.CierraConexion();
         }
     }
-    
-//    public ArrayList<Registro> GetListadoTarjetasFuera(){
-//        ArrayList<Registro> lstsec=new ArrayList<Registro>();
-//        try{
-//            String consultaSQL="SELECT * FROM registro WHERE estado ='S' OR estado IS NULL AND id IN (SELECT MAX(fecha_hora) FROM registro)";
-//            PreparedStatement pst=this.PrepareStatement(consultaSQL);
-//            ResultSet rs=this.ConsultaSQL(pst);
-//            while(rs.next()){
-//                lstsec.add((Registro)this.CargarObjeto(rs));
-//            }
-//            return lstsec;
-//        }catch (Exception ex){
-//            ex.printStackTrace();
-//            return null;
-//        }
-//    }
-//    
-//    public ArrayList<Registro> GetListadoTarjetasDentro(){
-//        ArrayList<Registro> lstsec=new ArrayList<Registro>();
-//        try{
-//            String consultaSQL="SELECT MAX(fecha_hora) as fecha_hora,id,estado,tarjeta_id FROM registro WHERE estado ='E' GROUP BY tarjeta_id";
-//            PreparedStatement pst=this.PrepareStatement(consultaSQL);
-//            ResultSet rs=this.ConsultaSQL(pst);
-//            while(rs.next()){
-//                lstsec.add((Registro)this.CargarObjeto(rs));
-//            }
-//            return lstsec;
-//        }catch (Exception ex){
-//            ex.printStackTrace();
-//            return null;
-//        }
-//    }
     
     public ArrayList<Registro> GetFuera(){
         ArrayList<Registro> lstsalida=new ArrayList<Registro>();
@@ -312,7 +268,7 @@ public class MapperRegistro extends BDConsultas{
             MapperTarjeta mt=new MapperTarjeta();
             Tarjeta t=new Tarjeta();
             t.id(rs.getInt("tarjeta_id"));
-            r.tarjeta((Tarjeta)mt.GetTarjeta(t));
+            r.tarjeta((Tarjeta)mt.Get(t));
             r.setEstado(rs.getString("estado"));
             //r.codigo(rs.getString("codigo").trim());
             return r;

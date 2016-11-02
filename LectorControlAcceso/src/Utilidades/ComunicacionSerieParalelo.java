@@ -199,9 +199,9 @@ public class ComunicacionSerieParalelo {
                         System.out.println("Received response: " + datosrecibidos);
                         
                         if(!datosrecibidos.isEmpty()){
+                            if(modelo.RegistrarLog()){log.RegistrarEnLog(datosrecibidos);}
                             modelo.ProcesarDatos(datosrecibidos);
                         }
-                        if(modelo.Registrar()){log.RegistrarEnLog(datosrecibidos);}
                         
                         //puertoSerial.closePort();//Close serial port
                         //*byte buffer[] = puertoSerial.readBytes(10);

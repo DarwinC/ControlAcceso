@@ -23,7 +23,6 @@ import java.sql.Date;
 import java.text.SimpleDateFormat;
 import java.util.ArrayList;
 import java.util.Calendar;
-import java.util.Iterator;
 import javax.swing.DefaultComboBoxModel;
 import javax.swing.DefaultListModel;
 import javax.swing.ListModel;
@@ -136,7 +135,8 @@ public class NegocioGeneral {
     public DefaultComboBoxModel GetListadoComboPuertoSerieLibres(){
         
         DefaultComboBoxModel cmb=new DefaultComboBoxModel();
-        for(String puertos: csp.getPuertosLibres()){
+        ArrayList<String> lp=csp.getPuertosLibres();
+        for(String puertos: lp){
             cmb.addElement(puertos);
         }
         return cmb;
@@ -144,7 +144,8 @@ public class NegocioGeneral {
     
     public DefaultListModel GetListadoBaudiosRate(){
         DefaultListModel dlm=new DefaultListModel();
-        for(int br: csp.getBaudiosRate()){
+        ArrayList<Integer> lb=csp.getBaudiosRate();
+        for(int br: lb){
             dlm.addElement(br);
         }
         
@@ -154,7 +155,8 @@ public class NegocioGeneral {
     public DefaultComboBoxModel GetListadoComboBaudiosRate(){
         
         DefaultComboBoxModel cmb=new DefaultComboBoxModel();
-        for(int br: csp.getBaudiosRate()){
+        ArrayList<Integer> lb=csp.getBaudiosRate();
+        for(int br: lb){
             cmb.addElement(br);
         }
         return cmb;
@@ -215,7 +217,7 @@ public class NegocioGeneral {
     
     public Usuario GetUsuario(Usuario u){
         MapperUsuario mu=new MapperUsuario();
-        return (Usuario)mu.GetUsuario(u);
+        return (Usuario)mu.Get(u);
     }
     
     public Usuario GetUsuarioTarjeta(Tarjeta t){
@@ -225,13 +227,19 @@ public class NegocioGeneral {
 
     public ArrayList<Usuario> GetUsuarios(){
         MapperUsuario mu=new MapperUsuario();
-        return mu.GetUsuarios();
+        ArrayList<Usuario> alu=new ArrayList<Usuario>();
+        ArrayList<IModel> lu=mu.GetAll();
+        for(IModel im: lu){
+            alu.add((Usuario)im);
+        }
+        return alu;
     }
     
     public DefaultListModel FindUsuarioByNombre(String nombre){
         MapperUsuario mu=new MapperUsuario();
         DefaultListModel dlm=new DefaultListModel();
-        for(Usuario u: mu.GetByNombre(nombre)){
+        ArrayList<Usuario> lu=mu.GetByNombre(nombre);
+        for(Usuario u: lu){
             dlm.addElement(u);
         }
         return dlm;
@@ -255,7 +263,8 @@ public class NegocioGeneral {
     public DefaultComboBoxModel GetUsuariosCMB(){
         MapperUsuario mu=new MapperUsuario();
         DefaultComboBoxModel dcmb=new DefaultComboBoxModel();
-        for(IModel im:mu.GetUsuarios()){
+        ArrayList<IModel> lu=mu.GetAll();
+        for(IModel im:lu){
             dcmb.addElement((Usuario)im);
         }
         return dcmb;
@@ -283,18 +292,25 @@ public class NegocioGeneral {
     
     public Sector GetSector(Sector s){
         MapperSector ms=new MapperSector();
-        return ms.GetSector(s);
+        return (Sector)ms.Get(s);
     }
     
     public ArrayList<Sector> GetSectores(){
         MapperSector ms=new MapperSector();
-        return ms.GetAllSectores();
+        ArrayList<Sector> als=new ArrayList<Sector>();
+        ArrayList<IModel> ls=ms.GetAll();
+        for(IModel im: ls){
+            als.add((Sector)im);
+        }
+        return als;
+        
     }
     
     public DefaultListModel FindSectorByNombre(String nombre){
         MapperSector ms=new MapperSector();
         DefaultListModel dlm=new DefaultListModel();
-        for(IModel im: ms.FindSectorByNombre(nombre)){
+        ArrayList<IModel> ls=ms.FindSectorByNombre(nombre);
+        for(IModel im: ls){
             dlm.addElement((Sector)im);
         }
         return dlm;
@@ -303,7 +319,8 @@ public class NegocioGeneral {
     public DefaultListModel GetListSectoresDeUsuario(Usuario u){
         MapperSector ms=new MapperSector();
         DefaultListModel dlm=new DefaultListModel();
-        for(Sector s:ms.GetSectoresByUsuario(u)){
+        ArrayList<Sector> ls=ms.GetSectoresByUsuario(u);
+        for(Sector s:ls){
             dlm.addElement(s);
         }
         
@@ -313,7 +330,8 @@ public class NegocioGeneral {
     public DefaultListModel GetListSectoresSinAsignarAlUsuario(Usuario u){
         MapperSector ms=new MapperSector();
         DefaultListModel dlm=new DefaultListModel();
-        for(Sector s:ms.GetSectoresSinAsignarAlUsuario(u)){
+        ArrayList<Sector> ls=ms.GetSectoresSinAsignarAlUsuario(u);
+        for(Sector s:ls){
             dlm.addElement(s);
         }
         
@@ -346,12 +364,12 @@ public class NegocioGeneral {
     
     public Tarjeta GetTarjeta(Tarjeta t){
         MapperTarjeta mt=new MapperTarjeta();
-        return mt.GetTarjeta(t);
+        return (Tarjeta)mt.Get(t);
     }
     
-    public boolean VerificarTarjetaDuplicada(Tarjeta t){
+    public boolean VerificarTarjetaDuplicada(String codigo){
         MapperTarjeta mt=new MapperTarjeta();
-        return mt.VerificaDuplicado(t);
+        return mt.GetByNumeroSerie(codigo)==null;
     }
     
     public Tarjeta GetTarjetaByNumeroSerie(String numero_serie){
@@ -361,14 +379,20 @@ public class NegocioGeneral {
 
     public ArrayList<Tarjeta> GetTarjetas(){
         MapperTarjeta mt=new MapperTarjeta();
-        return mt.GetTarjetas();
+        ArrayList<Tarjeta> alt=new ArrayList<Tarjeta>();
+        ArrayList<IModel> lt=mt.GetAll();
+        for(IModel im: lt){
+            alt.add((Tarjeta)im);
+        }
+        return alt;
     }    
     
     public DefaultComboBoxModel GetListadoTarjetaCMB(){
         DefaultComboBoxModel dcmb=new DefaultComboBoxModel();
         MapperTarjeta mt=new MapperTarjeta();
-        for(Tarjeta t:mt.GetTarjetas()){
-            dcmb.addElement(t);
+        ArrayList<IModel> lt=mt.GetAll();
+        for(IModel im:lt){
+            dcmb.addElement((Tarjeta)im);
         }
         return dcmb;
     }
@@ -376,55 +400,6 @@ public class NegocioGeneral {
     //***********************************************
     
     // REGISTROS
-    public Tarjeta ProcesarRegistro(String dato){
-        if(dato.trim().length()>0){
-            //Interprete interprete=new Interprete();
-            Tarjeta t=new Tarjeta(dato.trim());
-            t=this.GetTarjetaByNumeroSerie(t.codigo());
-            if(t==null){
-            //if(!this.VerificarTarjetaDuplicada(t)){
-                //si no esta registrada
-                t=new Tarjeta(dato.trim());
-                //System.out.println("el codigo de la nueva tarjeta: " + t.codigo());
-                if(this.AddTarjeta(t)){
-                    t.id(this.GetUltimoIdTarjeta());
-                }else{
-                    //aviso de error
-                    return null;
-                }
-            }
-            
-            // Estado ...
-            
-            String estado=this.ObtenerEstado(t);
-            
-            //t=this.GetTarjetaByNumeroSerie(t.codigo());
-            
-            //Registro r=interprete.InterpreteRegistro(dato);
-            Registro r=new Registro();
-            Calendar fechahora=Calendar.getInstance();
-            r.fecha_hora(fechahora);
-            r.tarjeta(t);
-            r.setEstado(estado);
-            if(r!=null){
-                if(!this.AddRegistro(r)){
-                    t=null;
-                }
-            }else{
-                t=null;
-            }
-            
-            return t;
-        }
-        
-        return null;
-        
-    }
-    
-    private String ObtenerEstado(Tarjeta t){
-        MapperRegistro mr=new MapperRegistro();
-        return mr.GetUltimoEstado(t);
-    }
     
     public boolean AddRegistro(Registro r){
         MapperRegistro mr=new MapperRegistro();
@@ -443,12 +418,17 @@ public class NegocioGeneral {
     
     private Registro GetRegistro(Registro r){
         MapperRegistro mr=new MapperRegistro();
-        return mr.GetRegistro(r);
+        return (Registro)mr.Get(r);
     }
 
     public ArrayList<Registro> GetRegistros(){
         MapperRegistro mr=new MapperRegistro();
-        return mr.GetRegistros();
+        ArrayList<Registro> alr=new ArrayList<Registro>();
+        ArrayList<IModel> lr=mr.GetAll();
+        for(IModel im: lr){
+            alr.add((Registro)im);
+        }
+        return alr;
     }   
     
     public DefaultListModel GetRegistrosBy(Calendar fecha_desde,Calendar fecha_hasta, Usuario u, Tarjeta t){
@@ -491,7 +471,9 @@ public class NegocioGeneral {
         ArrayList<ArrayList<String>> array_array=new ArrayList<ArrayList<String>>();
         ArrayList<String> subarray=null;
         Registro r=null;
-        for(int i=0;i<dlm.getSize();i++){
+        int largo=dlm.getSize();
+        
+        for(int i=0;i<largo;i++){
             r=(Registro) dlm.getElementAt(i);
             subarray=new ArrayList<String>();
             subarray.add(r.tarjeta().codigo());
@@ -524,7 +506,8 @@ public class NegocioGeneral {
     
     public DefaultListModel getListaSectores(){
         DefaultListModel dlm=new DefaultListModel();
-        for(Sector s: this.GetSectores()){
+        ArrayList<Sector> ls=this.GetSectores();
+        for(Sector s: ls){
             dlm.addElement(s);
         }
         return dlm;
@@ -532,7 +515,8 @@ public class NegocioGeneral {
 
     public DefaultComboBoxModel getListaSectoresCMB(){
         DefaultComboBoxModel cmbm=new DefaultComboBoxModel();
-        for(Sector s: this.GetSectores()){
+        ArrayList<Sector> ls=this.GetSectores();
+        for(Sector s: ls){
         cmbm.addElement(s);
         }
         return cmbm;
@@ -546,7 +530,8 @@ public class NegocioGeneral {
     
     public DefaultListModel getListadoTarjetas(){
         DefaultListModel dlm=new DefaultListModel();
-        for(Tarjeta t: this.GetTarjetas()){
+        ArrayList<Tarjeta> lt=this.GetTarjetas();
+        for(Tarjeta t: lt){
             dlm.addElement(t);
         }
         return dlm;
@@ -555,7 +540,8 @@ public class NegocioGeneral {
     public DefaultListModel GetTarjetasLibres(){
         DefaultListModel dlm=new DefaultListModel();
         MapperTarjeta mt=new MapperTarjeta();
-        for(Tarjeta t: mt.GetTarjetasSinUsuarioAsociado()){
+        ArrayList<Tarjeta> lt=mt.GetTarjetasSinUsuarioAsociado();
+        for(Tarjeta t: lt){
             dlm.addElement(t);
         }
         return dlm;
@@ -563,10 +549,11 @@ public class NegocioGeneral {
     
     public DefaultListModel getListadoUsuarios(){
         DefaultListModel dlm=new DefaultListModel();
-        for(Usuario u: this.GetUsuarios()){
+        ArrayList<Usuario> lu=this.GetUsuarios();
+        for(Usuario u: lu){
             dlm.addElement(u);
         }
         return dlm;
     }
-    
+
 }

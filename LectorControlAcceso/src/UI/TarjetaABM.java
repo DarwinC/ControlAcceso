@@ -172,7 +172,7 @@ public class TarjetaABM extends javax.swing.JDialog {
 
     private void Aceptar(){
         if(!this.txtcodigo.getText().trim().isEmpty()){
-            if(!this.modelo.VerificarCodigoDuplicadoTarjeta(new Tarjeta(this.txtcodigo.getText().trim()))){
+            if(!this.modelo.VerificarCodigoDuplicadoTarjeta(this.txtcodigo.getText().trim())){
                 if(this.t!=null){
                     this.t.codigo(this.txtcodigo.getText().trim());
                     if(this.modelo.ModificaTarjeta(t)){

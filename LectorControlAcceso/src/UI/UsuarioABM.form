@@ -136,6 +136,9 @@
       </Events>
     </Component>
     <Component class="javax.swing.JTextField" name="txtfoto">
+      <Events>
+        <EventHandler event="actionPerformed" listener="java.awt.event.ActionListener" parameters="java.awt.event.ActionEvent" handler="txtfotoActionPerformed"/>
+      </Events>
     </Component>
   </SubComponents>
 </Form>

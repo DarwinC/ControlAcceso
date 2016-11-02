@@ -20,7 +20,7 @@ import java.util.Calendar;
  *
  * @author Darwin
  */
-public class MapperUsuario extends BDConsultas{
+public class MapperUsuario extends BDConsultas implements IABM {
 
     public boolean Add(IModel imodel) {
         try{
@@ -124,17 +124,16 @@ public class MapperUsuario extends BDConsultas{
             this.CierraConexion();
         }
     }
-
-    public Usuario GetUsuario(Usuario u){
-        return (Usuario)this.Get(u);
-    }
     
-    private IModel Get(Usuario u) {
+    
+    
+    public IModel Get(IModel imodel) {
         try{
             String consultaSQL="SELECT * FROM usuario WHERE id=?";
             PreparedStatement pst=this.PrepareStatement(consultaSQL);
             
-            pst.setInt(1,u.id());
+            pst.setInt(1,imodel.id());
+            Usuario u=null;
             ResultSet rs=this.ConsultaSQL(pst);
             if(rs.next()){
             u = (Usuario)this.CargarObjeto(rs);
@@ -150,7 +149,7 @@ public class MapperUsuario extends BDConsultas{
         }
     }
 
-    public Usuario GetByTarjeta(Tarjeta t){
+    public IModel GetByTarjeta(Tarjeta t){
         try{
             String consultaSQL="SELECT * FROM usuario WHERE tarjeta_id=?";
             PreparedStatement pst=this.PrepareStatement(consultaSQL);
@@ -191,15 +190,7 @@ public class MapperUsuario extends BDConsultas{
         }
     }
 
-    public ArrayList<Usuario> GetUsuarios(){
-        ArrayList<Usuario> alu=new ArrayList<Usuario>();
-        for(IModel im:this.GetAll()){
-            alu.add((Usuario)im);
-        }
-        return alu;
-    }
-    
-    private ArrayList<IModel> GetAll() {
+    public ArrayList<IModel> GetAll() {
         ArrayList<IModel> lstu=new ArrayList<IModel>();
         try{
             String consultaSQL="SELECT * FROM usuario";
@@ -233,7 +224,7 @@ public class MapperUsuario extends BDConsultas{
                 MapperTarjeta mt=new MapperTarjeta();
                 t=new Tarjeta();
                 t.id(rs.getInt("tarjeta_id"));
-                t=(Tarjeta)mt.GetTarjeta(t);
+                t=(Tarjeta)mt.Get(t);
             }
             u.tarjeta(t);
             MapperSector ms=new MapperSector();

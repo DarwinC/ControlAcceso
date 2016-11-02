@@ -39,7 +39,7 @@ public abstract class BD {
         
         ///////////////////////////////////////////////////////////////////
         
-        String rutaArchivoCfg="\\configuracion_bd.ini"; //harcode !!!
+        String rutaArchivoCfg="\\configuracion_bd.ini"; //harcode sacar!!!
         
         //////////////////////////////////////////////////////////////////
         
@@ -66,15 +66,13 @@ public abstract class BD {
         }
         try{
             String DSN="jdbc:ucanaccess://"+servidor;
-            System.out.println(servidor);
             //String DSN="jdbc:odbc:Driver={Microsoft Access Driver (*.mdb, *.accdb)};DBQ="+ basedatos; 
             //this.con = DriverManager.getConnection( "jdbc:odbc:Driver={Microsoft Access Driver (*.mdb)};DBQ=c:/BaseDatos/base.mdb,"root" , "password");
             this.con = DriverManager.getConnection( DSN,usuario , password);
             return this.con;
         }catch (Exception e){
             e.printStackTrace();
-            
-            return null; ////-> mensaje no se pudo conectar a la base de  datos
+            return null; // no se pudo conectar a la base de  datos
         }
     }
     
@@ -98,7 +96,7 @@ public abstract class BD {
             return this.con;
         }catch(Exception e){
             e.printStackTrace();
-            return null; //-> mensaje no se pudo conectar a la base de datos;
+            return null; // no se pudo conectar a la base de datos;
         }
     }
 }
